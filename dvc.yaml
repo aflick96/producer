@@ -2,4 +2,5 @@ stages:
   update_database_data:
     cmd: python src/process.py
     outs:
-      - output/*.csv
+      - output/db_data.csv
+      - output/timestamp.txt
