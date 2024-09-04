@@ -1,0 +1,15 @@
+stages:
+  - run
+
+run_pipeline:
+  stage: run
+  image: python:3.8
+  before_script:
+    - pip install -r requirements.txt
+    - pip install dvc
+  script:
+    - dvc repro
+    - dvc push
+    - export TIMESTAMP=$(cat output/timestamp.txt)
+    - git add output/*.dvc dvc.lock
+    - git commit -m "Updated dataset as ${TIMESTAMP} and pushed to DVC remote" 

@@ -1,0 +1,5 @@
+stages:
+  update_database_data:
+    cmd: python src/process.py
+    outs:
+      - output/*.csv
